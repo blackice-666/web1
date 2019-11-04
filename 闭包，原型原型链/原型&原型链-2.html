@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*原型:
+        1,每个函数都天生自带一个prototype属性（原型），它的值是个对象类型的，作用是储存供当前类的实例使用的
+        属性和方法
+        2，每个prototype上都有一个constructor属性，指向当前函数本身
+        3，每个对象都天生自带一个__proto__的属性，指向它所属类的prototype（原型）
+
+        4, 所有内置类的基类都是Object对象
+        
+        */
+
+
+       function Fn(){
+         this.name='name';
+         this.sum=function(){
+             console.log(5);
+         }
+       }
+       Fn.prototype.psum=function(){
+           console.log('a');
+       }
+       Fn();
+       var f= new Fn;
+
+
+       Fn.a=function(){
+
+       }
+       Fn.a();
+
+
+        //f.sum();
+       
+    //    console.log(f.__proto__);//Fn.prototype
+    //     console.log(f.__proto__.__proto__.constructor);
+        //f.__proto__=Fn.prototype
+        //Fn.prototype.__proto__=Object.prototype
+        //Object.prototype.constructor:Object
+
+
+
+       //console.log(f.__proto__===fn.prototype);
+       //console.log(f.__proto__.constructor===f);
+       //console.log(f.__proto__.prototype);
+       // console.log(f.__proto__.__proto__.constructor);
+
+
+
+
+
+        /*原型链：当操作一个对象属性或者方法的时候，首先会找私有的，有就使用，私有的没有，
+        会通过__proto__属性，找它所属类原型(prototype)中的公共的方法和属性，一直找到基类Object位置，
+        这种一级级向上查找的机制叫做原型链机制
+       */
+
+      function fn(){
+
+      }
+      var ary=[];
+       console.log(Array.call);
+
+
+    </script>
+</body>
+</html>

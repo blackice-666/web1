@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数有三种角色：
+        /*
+        1,普通函数：
+         创建函数会开辟一个堆内存，存放函数体的内容
+         普通函数执行会形成一个私有作用域，这个作用域叫栈内存
+         堆栈内存的释放
+         作用域链
+
+        2，类:构造函数
+          原型：proptotype
+          原型链：__proto__
+          实例的概念
+
+        3，普通对象
+          和普通的object没有区别，可以添加删除属性
+        */
+
+       function fn(){
+
+       }
+       fn.a=19;
+       console.log(fn.a);
+       delete fn.a;
+       console.log(fn.a);
+     
+      
+    </script>
+</body>
+</html>

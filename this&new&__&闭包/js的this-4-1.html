@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+     js中this指向规律：
+     当前方法执行的主体是谁，this就是谁（谁执行的这个方法，this就是谁）
+     this和当前函数在那创建的，在那执行的都没有关系
+   
+     1，全局作用域中的this是window
+     2，函数执行，this取决于谁调用了它，this就是谁(点前面是谁this就是谁),没有点this是window
+     在js的严格模式下（"use strict"），没有点，是undefined
+       // var obj={
+    //   fn:function(){
+    //    console.log(this);
+    //   }
+    //   }
+    //     var f= obj.fn;
+    //     window.f();
+    //     window.alert();
+       // obj.fn();
+
+     3，构造函数执行，方法中this是当前类的实例
+      function Fn(){
+        this.n=12;
+        }
+        var f =new Fn();
+     4，匿名函数和自执行函数的this都是window
+            var fn= function (){
+            console.log(this);
+            }
+            fn();
+     5，给元素的某个事件绑定方法，方法中的this就是当前操作的元素本身
+         document.onclick=function(){
+            console.log(this);
+        }
+
+     如何改变this指向：
+     1，call,apply,bind
+      非严格模式下：第一个参数不写或者写null，this是window
+      严格模式下：第一参数不写，this是window
+     2, 使用箭头函数，箭头函数中没有this，this是上下文(在那定义的)的this
+     3, 将this保存为变量
+    var obj= {
+           n:10,
+           fn:function(){
+               var _this=this;
+            setTimeout(function(){
+                console.log(_this);
+            }, 1000);
+           }
+         }
+        var f= obj.fn();
+
+
+    */
+    
+    var obj= {
+           n:10,
+           fn:function(x,y){
+               
+              console.log(this,x,y);
+           }
+         }
+        var f= obj.fn;
+     //  console.dir(f);
+       // f.call(obj,[10],20);
+       
+      // f.apply(obj,[10,20,30]);
+
+     var s= f.bind(obj,[10,20,30],20);
+      s()
+      
+
+
+    //    var a= {
+    //        obj,
+    //        name:"lisi",
+    //        age:"30"
+    //    }
+
+    //    a.obj.fn();
+
+
+// var sum=30;
+// var obj={
+//     sum:20,
+//     fn:function (sum){
+//         var _this=this;
+//         setTimeout(function(){
+//          console.log(_this.sum);
+//         },1000)
+//     }
+// };
+// obj.fn();
+
+// var obj={num:20};
+// var num=10;
+// var fn=function(){
+//     console.log(this.num);
+    
+// }
+// var s=fn.bind(obj,12);
+// console.log(s());
+
+ 
+    </script>
+</body>
+</html>

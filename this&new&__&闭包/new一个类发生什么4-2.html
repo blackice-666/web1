@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*new 一个函数发生了什么
+        1,和普通函数执行一样，会形成一个私有的作用域（栈内存）
+        2，形参赋值，变量提升
+        3，浏览器会创建一个空对象出来，并将this指向这个对象
+        4，代码自上而下执行，遇到this.xxx=xxx,就存储到之前创建好的空对象中
+        5，默认不用return，也会返回这个对象
+
+        返回的每一个对象就是每一个实例，实例和实例之间没有关系
+
+        new 一个函数，return和不return的问题：
+        1，默认return实例
+        2，手动return，return的是基本值，没有作用，return的是引用值，默认的实例将被引用值代替
+
+        new Fn和new Fn() 
+        不传参，执行上没有区别，加了(),优先级更高
+        */
+
+        //普通函数执行
+        //1,函数执形成一个私有作用域（提供js代码运行的环境，保存基本值）
+        //2,形参赋值，变量提升
+        //3,js自上而下运行
+        //4,是否有rerutn
+        
+        // function Fn(){
+        //     var n=12;
+        //     this.n=10;
+            
+        // }
+        // var f=new Fn();
+        //   f.n
+
+
+
+        function  Fn() {
+            var n=10;
+            this.n=20;
+            this.sum=function(){
+                console.log(1);
+            }
+           //this.sum();
+        }
+        Fn.sum=function(){
+            console.log(2);
+        }
+     
+     var f=new Fn();
+     console.log(f.n);
+
+     //var f1= new new Fn().sum();
+    //  new Fn().sum();
+    //  new Fn.sum();
+
+        
+        
+      
+       
+
+    </script>
+</body>
+</html>

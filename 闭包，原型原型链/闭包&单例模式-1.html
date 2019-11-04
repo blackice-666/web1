@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        - 什么是闭包：
+         闭包是js中重要的保护机制，函数执行形成一个不销毁私有的作用域，保护和保存里面的私有变量不受外界的干扰，
+         这种保护和保存的机制就是闭包
+         - 作用：
+         1，保护里面的私有变量不受外界的干扰
+         2，不销毁的作用域会保存里面的东西，供以后使用
+         - 缺点：
+          不销毁的栈内存，会影响性能，如果非要使用闭包，尽量使用完成销毁
+        */
+
+        //闭包的体现方式：
+        //1, 惰性函数，也叫做单例设计模式
+        var user= (function(){
+            var a=10;
+            var fn=function(){
+            }
+             return {
+                 a,
+                 fn
+             }
+        })()
+        user.fn();
+
+        //2,柯理化函数
+        function fns(){
+             var name=1;
+            return function(n){
+               console.log(name+=n);
+             }
+            
+        }
+        var f=fns(); 
+         f(3);
+         f(4);
+        fns()(5);
+
+   
+
+
+
+
+    </script>
+</body>
+</html>

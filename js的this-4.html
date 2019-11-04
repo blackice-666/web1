@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+     js中this指向规律：
+     当前方法执行的主体是谁，this就是谁（谁执行的这个方法，this就是谁）
+     this和当前在那创建的，在那执行的都没有关系
+   
+     1，全局作用域中的this是window
+     2，函数执行，this取决于谁调用了它，this就是谁(点前面是谁this就是谁),没有点this是window
+     在js的严格模式下（"use strict"），没有点，是undefined
+     3，构造函数执行，方法中this是当前类的实例
+     4，匿名函数和自执行函数的this都是window
+     5，给元素的某个事件绑定方法，方法中的this就是当前操作的元素本身
+     
+
+     如何改变this指向：
+     1，call,apply,bind
+      非严格模式下：第一个参数不写或者写null，this是window
+      严格模式下：第一参数不写，this是window
+     2, 使用箭头函数，箭头函数中没有this，this是上下文(在那定义的)的this
+     3, 将this保存为变量
+    */
+
+  
+
+var sum=30;
+var obj={
+    sum:20,
+    fn:function (sum){
+        var _this=this;
+        setTimeout(function(){
+         console.log(_this.sum);
+        },1000)
+    }
+};
+obj.fn();
+
+
+ 
+    </script>
+</body>
+</html>

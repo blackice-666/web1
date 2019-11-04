@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /*
+      - 逻辑 与 和逻辑 或
+       与： &&
+       或： ||
+       使用方式：
+         - 1,跟if判断一起使用
+         &&:两个条件都符合 才会返回真
+         || :其中一个条件符合就返回真
+      var username='hmm',pas='123456';
+
+      if(username=='hmm' && pas=='123456'){
+         alert('ok')
+      }
+         - 2,赋值使用
+         var a = 1 || 2; 先判断1是否为真，1为真 a=1，否则a=2
+         var b = 1 && 2; 先判断1是否为真，1为真 b=2，否则 b=1
+          var a= 1 && 2;
+        console.log(a);//2
+
+           var a,b=null;
+          var c= a || b;
+          console.log(c);
+
+            var d,e=10;
+          var f= d && e;
+          console.log(f);
+
+        var foo='hello'; 
+        (function(foo){
+          console.log(foo);//hello
+          var foo=foo || 'world'; 
+          console.log(foo); //hello
+        })(foo);
+        console.log(foo);//hello
+      */ 
+     // 0 ,null , undefined, "", NaN
+
+     //需求：判断是否有参数，有就title=参数，没有title=‘默认标题'
+
+     //1,判断形参是否有
+     //2,有就给title赋值 参数的值，没有给给title默认值
+     
+    //  var a = 1 || 2; 先判断1是否为真，1为真 a=1，否则a=2
+    //  var b = 1 && 2; 先判断1是否为真，1为真 b=2，否则 b=1
+       function tit(t){
+        //  if(!t){
+        //    t='‘默认标题'
+        //  }
+
+        // if(typeof t =='undefined'){
+        //   t='默认标题'
+        // }
+         t = t ||'默认标题';
+         return t;
+       }
+       tit(false);
+
+    </script>
+</body>
+</html>

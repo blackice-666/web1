@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1，全局作用域中的this是window
+        2，函数执行，this取决于谁调用了它，this就是谁(点前面是谁this就是谁),没有点this是window
+     在js的严格模式下（"use strict"），没有点，是undefined
+        3，构造函数执行，方法中this是当前类的实例
+        4，匿名函数和自执行函数的this都是window
+        5，给元素的某个事件绑定方法，方法中的this就是当前操作的元素本身
+        */
+    var num = 10;
+    var obj = {num: 20};
+    obj.fn = (function (num) {
+        this.num = num * 3;
+        num++;
+        return function (n) {
+        this.num += n;  
+        num++;
+            console.log(num);
+        }
+    })(obj.num);
+    var fn = obj.fn;
+    fn(5);
+    obj.fn(10);
+    console.log(num, obj.num);
+
+    
+
+    </script>
+</body>
+
+</html>

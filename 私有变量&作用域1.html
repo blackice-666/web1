@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    <script>
+     /*
+     - 变量
+      在全局下声明的变量叫做全局变量，在私有作用域下声明的变量叫做私有变量（局部变量）
+      在同一作用域中，有形参赋值和var 一个变量，都是这个作用域中的私有变量
+      形参和var变量同名的情况：
+      先形参赋值 可以理解为 创建函数的时候，默认var了一个 foo 只是省略了var 赋值为10 
+      变量提升  var foo 重新赋值为12 
+      形参和私有变量重复，就是重新定义了这个变量
+
+    - 作用域查找
+      当前函数执行，它的作用域和它在那执行没有关系，和它在那定义有关系
+      在那定义的，它的作用域就是谁
+
+      当前作用域中查找一个变量，先找自己作用域中的变量，有就使用，没有就向它的上级作用域查找，
+      一直找到window全局作用域位置，这种一级一级查找的机制叫做作用域链
+     */
+
+     var foo=10;
+     function fn(foo){
+       var foo=12;
+       console.log(foo);
+       //arguments.callee //函数本身，调用arguments.callee()=>递归
+      // console.log(arguments.callee.caller);//函数执行的宿主环境
+     }
+    fn();
+
+    // function sum(){
+    //   fn();
+    // }
+    // sum();
+
+     
+
+    </script>
+</body>
+</html>

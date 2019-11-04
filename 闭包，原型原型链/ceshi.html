@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //闭包测试2题
+        var i = 10;
+        function fn() {
+            return function (n) {
+                console.log(n + (++i));
+            }
+        }
+        var f = fn();
+        f(20);
+        fn()(20);
+        fn()(30);
+        f(30);
+
+        var a = 9;
+        function fn() {
+            a = 0;
+            return function (b) {
+                return b + a++;
+            }
+        }
+        var f = fn();
+        console.log(f(5));
+        console.log(fn()(5));
+        console.log(f(5));
+        console.log(a);
+
+
+
+        var num = 10;
+        var obj = { num: 20 };
+        obj.fn = (function (num) {
+            this.num = num * 3;
+            num++;
+            return function (n) {
+                this.num += n;
+                num++;
+                console.log(num);
+            }
+        })(obj.num);
+        var fn = obj.fn;
+        fn(5);
+        obj.fn(10);
+        console.log(num, obj.num);
+
+        //原型&原型链
+
+        function A() { }
+        function B(a) {
+            this.a = a;
+        }
+        function C(a) {
+            if (a) {
+                this.a = a;
+            }
+        }
+        A.prototype.a = 1;
+        B.prototype.a = 1;
+        C.prototype.a = 1;
+
+        console.log(new A().a);
+        console.log(new B().a);
+        console.log(new C(2).a);
+
+
+
+        function Fn() {
+            this.x = 100;
+            this.y = 200;
+            this.getX = function () {
+                console.log(this.x);
+            }
+        }
+        Fn.prototype.getX = function () {
+            console.log(this.x);
+        };
+        Fn.prototype.getY = function () {
+            console.log(this.y);
+        };
+        var f1 = new Fn;
+        var f2 = new Fn;
+        console.log(f1.getX === f2.getX);
+        console.log(f1.getY === f2.getY);
+        console.log(f1.__proto__.getY === Fn.prototype.getY);
+        console.log(f1.__proto__.getX === f2.getX);
+        console.log(f1.getX === Fn.prototype.getX);
+        console.log(f1.constructor);
+        console.log(Fn.prototype.__proto__.constructor);
+        f1.getX();
+        f1.__proto__.getX();
+        f2.getY();
+        Fn.prototype.getY();
+
+
+
+
+
+        //函数的三种角色测试题
+
+        function Foo() {
+            getName = function () {
+                console.log(1);
+            };
+            return this;
+        }
+        Foo.getName = function () {
+            console.log(2);
+        };
+        Foo.prototype.getName = function () {
+            console.log(3);
+        };
+        var getName = function () {
+            console.log(4);
+        };
+        function getName() {
+            console.log(5);
+        }
+
+        Foo.getName();//2
+        getName();//4
+        Foo().getName();//1
+        getName();//1
+        new Foo.getName();//2
+        new Foo().getName();//3
+        new new Foo().getName();//3
+
+
+    </script>
+</body>
+
+</html>
